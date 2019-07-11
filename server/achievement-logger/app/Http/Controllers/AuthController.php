@@ -36,15 +36,18 @@ class AuthController extends Controller
         $user = Users::where('email', $request->input('email'))->first();
 
         if (!$user) {
-            return response()->json(['error' => 'ログインできませんでした。'], 400);
+            return response()->json(['error' => 'login denied!'], 400);
         }
-
-        return response()->json(['error' => 'ここで！'], 400);
 
         if (Hash::check($request->input('password'), $user->password)) {
             return response()->json($this->jwt($user)->__toString(), 200);
         }
 
-        return response()->json(['error' => 'ログインできませんでした。'], 400);
+        return response()->json(['error' => 'login disaccepted!'], 400);
+    }
+
+    public function authTest(Request $request)
+    {
+        return 'fugafuga';
     }
 }

@@ -15,8 +15,23 @@ $router->get('/', function () use ($router) {
     return $router->app->version();
 });
 
+$router->get('/hogehoge', function () use ($router) {
+    return 'fugafuga';
+});
+
+$router->post('/hogehoge', function () use ($router) {
+    return 'fuga';
+});
+
 $router->post(
-    'auth/login', 
+    'auth/test',
+    [
+        'uses' => 'AuthController@authTest'
+    ]
+);
+
+$router->post(
+    'auth/login',
     [
         'uses' => 'AuthController@authenticate'
     ]
