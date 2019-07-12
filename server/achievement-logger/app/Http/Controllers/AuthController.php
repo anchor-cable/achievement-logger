@@ -10,7 +10,7 @@ use Lcobucci\JWT\Signer\Hmac\Sha256;
 
 class AuthController extends Controller
 {
-    private function jwt(User $user)
+    private function jwt(Users $user)
     {
         $signer = new Sha256();
         $token = (new Builder())->setIssuer('http://achievement-logger')
